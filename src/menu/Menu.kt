@@ -12,28 +12,32 @@ class Menu {
         println("3 - Dar baixa em um item")
         println("4 - Sair do programa")
 
-        //TODO:deixar sem o try/catch para avaliar se a galera percebe que dá problema de entrada de dado se for string
-        val opcao = readln().toInt()
+        try {
+            val opcao = readln().toInt()
 
-        when (opcao) {
-            1 -> {
-                estoque.registrarItem()
-                this.menuPrincipal(estoque)
-            }
-            2 -> {
-                estoque.listarItens()
-                this.menuPrincipal(estoque)
-            }
-            3 -> {
-                estoque.darBaixaItem()
-                this.menuPrincipal(estoque)
-            }
+            when (opcao) {
+                1 -> {
+                    estoque.registrarItem()
+                    this.menuPrincipal(estoque)
+                }
+                2 -> {
+                    estoque.listarItens()
+                    this.menuPrincipal(estoque)
+                }
+                3 -> {
+                    estoque.darBaixaItem()
+                    this.menuPrincipal(estoque)
+                }
 
-            4 -> exitProcess(10)
-            else -> {
-                println("Opção inválida, tente novamente")
-                menuPrincipal(estoque);
+                4 -> exitProcess(0)
+                else -> {
+                    println("Opção inválida, tente novamente")
+                    menuPrincipal(estoque);
+                }
             }
+        }catch (e: Exception){
+            println("Opção inválida, digite novamente")
+            menuPrincipal(estoque)
         }
     }
 }
